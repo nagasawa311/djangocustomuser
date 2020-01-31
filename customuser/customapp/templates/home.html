@@ -1,0 +1,14 @@
+{%extends "base.html"%}
+
+{%block content%}
+<h1>ホームページ</h1>
+<br>
+<p>ログインしているユーザー&nbsp;:&nbsp;{{user}}</p>
+<br>
+<div style="text-align:center; margin-top:200px;">
+	<a class="btn btn-primary" href="{%url 'list'%}" role="button">TODOリストへ</a><br><br>
+	<a class="btn btn-danger" href="{%url 'log_out'%}" role="button" >ログアウト</a>
+</div>
+
+
+{%endblock%}

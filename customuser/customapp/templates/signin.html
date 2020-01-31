@@ -1,0 +1,22 @@
+{%extends "base.html"%}
+
+{%block content%}
+<div style="text-align:center;">
+	<br><br><h1 style="color:red; font-weight:bold;">sign in here!</h1><br>
+	<form method="POST" action="{% url 'signin' %}">{%csrf_token%}
+		<label for="username">username</label>
+		<input type="text" name="username" id="username"><br><br>
+		<label for="password">password</label>
+		<input type="password" name="password" id="password"><br>
+		{%if error%}
+			<div style="color:red; font-size:14px;">
+				{{error}}
+			</div>
+		{%endif%}<br>
+		<button type="submit" class="btn btn-primary">signin</button><br><br>
+		<a class="btn btn-primary" href="{%url 'signup'%}" role="button">create account</a>
+
+	</form>
+</div>
+
+{%endblock%}

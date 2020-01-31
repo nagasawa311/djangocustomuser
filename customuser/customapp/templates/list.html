@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{%block content%}
+<br><h1 style="text-align:center;"><span style="font-weight:bold; font-size:50px;">{{user}}</span>&nbsp; <span style="font-size:29px;">さんのTODOリスト</span></h1>
+
+<br><br>
+
+{%for item in task%}
+<div class="alert alert-primary" role="alert" style="margin:auto; width:500px; font-weight:bold; font-size:18px; ">
+	{{forloop.counter}}&nbsp;:&nbsp;{{item}}
+	<span style="float:right;">
+		<form method="POST" action="{%url 'delete'%}">{%csrf_token%}
+			<input class="btn btn-danger" type="submit" value="Delete!">
+			<input type="hidden" name="number" value={{forloop.counter}}>
+			<input type="hidden" name="item" value={{item}}>
+		</form>
+	</span>
+</div><br>
+{%endfor%}
+
+<div style="text-align:center; margin-top:40px; ">
+	<form method="POST" action="{% url 'list'%}">{%csrf_token%}
+		<input type="text" name="todo" style="width:400px;">
+		<input class="btn btn-primary" type="submit" value="add" style="padding:4px 10px;">
+	</form>
+	<br>
+	<a class="btn btn-primary" href="{%url 'home'%}" role="button" >ホームページへ</a>
+</div><br><br><br>
+
+{%endblock%}
